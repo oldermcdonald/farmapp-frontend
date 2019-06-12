@@ -1,0 +1,12 @@
+.toDoList form {
+  border: 1px solid black;
+}
+
+.toDoList button {
+  background-color: white;
+  border: 1px solid black
+}
+
+.toDoList button:hover {
+  background-color: yellow
+}
