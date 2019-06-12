@@ -33,11 +33,23 @@ class App extends React.Component {
     this.setState({currentItem}) // store 
   }
 
+
   // adds the current item to the item array
   addItem = event => {
     event.preventDefault()
-    const newItem = this.state.currentItem
+
+    const newItem = {
+      id: 0,
+      title: this.state.currentItem.text,
+      category: 'placeholder',
+      lat: '00.000000',
+      long: '00.000000',
+      location: 'placeholder',
+      details: 'placeholder'
+    }
+
     console.log(`adding new item to state: ${newItem.text}`)
+    
     // add newItem to items with spread
     const items = [ ...this.state.items, newItem ]
     this.setState({
@@ -46,6 +58,7 @@ class App extends React.Component {
       currentItem: { text: '', key: ''}
     })
   }
+
 
   render() {
     return (
@@ -58,7 +71,7 @@ class App extends React.Component {
         />
         <h2>Current todo list:</h2>
 
-        <ListItem />
+        <ListItem itemsArray={this.state.items}/>
 
       </div>
     );
