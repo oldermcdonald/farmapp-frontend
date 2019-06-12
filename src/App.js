@@ -1,6 +1,6 @@
 import React from 'react';
-import ToDoList from './ToDoList'
-import ListItem from './ListItem'
+import ToDoList from './components/ToDoList'
+import ListItem from './components/ListItem'
 import axios from 'axios'
 
 
@@ -16,23 +16,34 @@ class App extends React.Component {
     }
   }
 
-  // Get data from server after first render
   componentDidMount() {
-    this.getToDoItemsFromDB();
+    // Get data from server after first render
+    // this.getServerData()
+
+    this.getServerData()
+      .then(dataFromServer => this.updateState(dataFromServer))
   }
 
-  getToDoItemsFromDB() {
-    let apiUrl = 'http://localhost:8080/api/todolist'
-    axios.get(apiUrl) // get api data
-    .then(res => {
-      this.setState({ // add db items to state
-        items: res.data
-      })
+
+  getServerData() {
+    return axios.get('http://localhost:8080/api/todolist').then(response => {
+      return response.data
     })
     .catch(err => console.log(err))
+    // axios.get('http://localhost:8080/api/todolist')
+    // .then(response => {
+    //   this.setState({
+    //     items: response.data
+    //   })
+    // })
+    // .catch(err => console.log(err))
   }
 
-
+  updateState = data => {
+    this.setState({
+      items: data
+    })
+  }
 
   // capture input text ready to store when form submitted
   handleInputField = event => {
