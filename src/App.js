@@ -16,52 +16,64 @@ class App extends React.Component {
     }
   }
 
-  // Get data from server api
+  // Get data from server after first render
   componentDidMount() {
-    const apiUrl = 'http://localhost:8080/api/todolist'
+    this.getToDoItemsFromDB();
+  }
+
+  getToDoItemsFromDB() {
+    let apiUrl = 'http://localhost:8080/api/todolist'
     axios.get(apiUrl) // get api data
     .then(res => {
-      console.log(res)
       this.setState({ // add db items to state
         items: res.data
       })
     })
+    .catch(err => console.log(err))
   }
 
-  // get input text ready to store when form submitted
+
+
+  // capture input text ready to store when form submitted
   handleInputField = event => {
     console.log('input received')
     const inputText = event.target.value // get text from input
     const currentItem = {
-      text: inputText,
-      key: Date.now()
+      key: Date.now(),
+      title: inputText,
+      category: 'placeholder',
+      lat: '00.000000', // get on submit
+      long: '00.000000', // get on submit
+      location: 'placeholder',
+      details: 'placeholder'
     }
-    this.setState({currentItem}) // store 
+    this.setState({currentItem})
   }
 
 
   // adds the current item to the item array
   addItem = event => {
     event.preventDefault()
-
-    const newItem = {
-      id: 0,
-      title: this.state.currentItem.text,
-      category: 'placeholder',
-      lat: '00.000000',
-      long: '00.000000',
-      location: 'placeholder',
-      details: 'placeholder'
-    }
-
-    console.log(`adding new item to state: ${newItem.text}`)
-
-    // add newItem to items with spread
+    const newItem = this.state.currentItem
+    console.log(`adding new item to state: ${newItem.title}`)
+    // update state with newItem
     const items = [ ...this.state.items, newItem ]
     this.setState({
       items: items,
       // reset currentItem to empty values
       currentItem: { text: '', key: ''}
+    })
+    // update db with newItem
+    this.sendToDoItemsToDB(newItem)
+  }
+
+
+  // Send item to database
+  sendToDoItemsToDB = itemToAdd => {
+    let apiUrl = 'http://localhost:8080/api/todolist'
+    axios.post(apiUrl, itemToAdd)
+    .then(res => {
+      console.log(res)
     })
   }
 
@@ -69,6 +81,22 @@ class App extends React.Component {
   removeItem = event => {
     console.log('item removed')
   }
+
+
+  getCurrentGPSPosition() {
+    if ("geolocation" in navigator) {
+      // check if geolocation is supported
+      navigator.geolocation.getCurrentPosition( position => {
+        console.log(`lat: ${position.coords.latitude}`)
+        console.log(`long: ${position.coords.longitude}`)
+      })
+      // provide error condition if location not returned
+    } else {
+      console.log('geolocation is not enabled')
+      // get location some other way
+    }
+  }
+
 
 
   render() {
@@ -81,9 +109,7 @@ class App extends React.Component {
           currentItem={this.state.currentItem}
         />
         <h2>Current todo list:</h2>
-
         <ListItem itemsArray={this.state.items}/>
-
       </div>
     );
   }
