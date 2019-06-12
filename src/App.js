@@ -12,7 +12,7 @@ class App extends React.Component {
     }
   }
 
-  // Get data from server api call
+  // Get data from server api with fetch
   componentDidMount() {
     const apiUrl = 'http://localhost:8080/api/todolist'
     fetch(apiUrl) // fetch api data
@@ -33,10 +33,18 @@ class App extends React.Component {
     this.setState({currentItem}) // store 
   }
 
+  // adds the current item to the item array
   addItem = event => {
     event.preventDefault()
-    console.log('adding item to state')
-    
+    const newItem = this.state.currentItem
+    console.log(`adding new item to state: ${newItem.text}`)
+    // add newItem to items with spread
+    const items = [ ...this.state.items, newItem ]
+    this.setState({
+      items: items,
+      // reset currentItem to empty values
+      currentItem: { text: '', key: ''}
+    })
   }
 
   render() {
