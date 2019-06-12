@@ -1,6 +1,7 @@
 import React from 'react';
 import ToDoList from './ToDoList'
 import ListItem from './ListItem'
+import axios from 'axios'
 
 
 class App extends React.Component {
@@ -8,19 +9,21 @@ class App extends React.Component {
     super()
     this.state = {
       items: [], // to do list items
-      currentItem: {text:'', key:''} // store text entered
+      currentItem: {
+        text:'',
+        key:''
+      } // store text entered
     }
   }
 
-  // Get data from server api with fetch
+  // Get data from server api
   componentDidMount() {
     const apiUrl = 'http://localhost:8080/api/todolist'
-    fetch(apiUrl) // fetch api data
-    .then(res => res.json()) // convert api data to json
-    .then(data => {
-      console.log(data)
+    axios.get(apiUrl) // get api data
+    .then(res => {
+      console.log(res)
       this.setState({ // add db items to state
-        items: data
+        items: res.data
       })
     })
   }
@@ -29,7 +32,10 @@ class App extends React.Component {
   handleInputField = event => {
     console.log('input received')
     const inputText = event.target.value // get text from input
-    const currentItem = { text: inputText, key: Date.now() }
+    const currentItem = {
+      text: inputText,
+      key: Date.now()
+    }
     this.setState({currentItem}) // store 
   }
 
@@ -49,7 +55,7 @@ class App extends React.Component {
     }
 
     console.log(`adding new item to state: ${newItem.text}`)
-    
+
     // add newItem to items with spread
     const items = [ ...this.state.items, newItem ]
     this.setState({
@@ -57,6 +63,11 @@ class App extends React.Component {
       // reset currentItem to empty values
       currentItem: { text: '', key: ''}
     })
+  }
+
+
+  removeItem = event => {
+    console.log('item removed')
   }
 
 

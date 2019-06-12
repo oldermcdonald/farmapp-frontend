@@ -1,3 +1,22 @@
 .list-item {
   border: 1px solid green;
 }
+
+.list-item li {
+  display: flex;
+  border: 1px solid black;
+}
+
+.list-item-checkbox {
+  border: 1px solid black;
+  width: 1em;
+  height: 1em;
+}
+
+.list-item-checkbox:active {
+  background-color: red;
+}
+
+ul {
+  list-style: none;
+}

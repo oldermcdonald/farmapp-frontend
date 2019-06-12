@@ -5,7 +5,8 @@ export default class ListItem extends React.Component {
   generateTasks(item) {
     return (
       <li key={item.key}>
-        {item.title}
+        <div className="list-item-checkbox"></div>
+        <p>{item.title}</p>
       </li>
     )
   }
