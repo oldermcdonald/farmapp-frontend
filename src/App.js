@@ -21,7 +21,10 @@ class App extends React.Component {
     // this.getServerData()
 
     this.getServerData()
-      .then(dataFromServer => this.updateState(dataFromServer))
+      .then(dataFromServer => {
+        this.updateAppState(dataFromServer)
+        this.saveEventDataLocally(dataFromServer)
+      })
   }
 
 
@@ -39,10 +42,15 @@ class App extends React.Component {
     // .catch(err => console.log(err))
   }
 
-  updateState = data => {
+  updateAppState = data => {
     this.setState({
       items: data
     })
+  }
+
+
+  saveEventDataLocally = data => {
+    console.log('saving to indexedDb')
   }
 
   // capture input text ready to store when form submitted
