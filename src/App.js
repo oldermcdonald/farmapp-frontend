@@ -24,7 +24,7 @@ class App extends React.Component {
       .then(dataFromServer => {
         this.updateAppState(dataFromServer)
         this.saveEventDataLocally(dataFromServer)
-      })
+      }).catch(err => console.log(err))
   }
 
 
@@ -135,3 +135,19 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+
+// first connect online
+// precache all assets
+// get first server psql database items
+
+// >> OFFLINE
+
+// new items go to indexedDB
+
+// ONLINE
+
+// workbox plugin > BackgroundSync
+// Send back to server when online in background (via service worker)

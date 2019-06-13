@@ -12,7 +12,7 @@ export default class ToDoList extends React.Component {
             type="text"
             placeholder="fix fence"
             // ref={this.props.inputElement}
-            value={this.props.currentItem.text} // need .text otherwise object returned
+            value={this.props.currentItem.text}
             onChange={this.props.handleInputField}
           />
           <button type="submit">Add Task</button>

@@ -10,6 +10,13 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+
+
+// import importScripts from 'import-scripts'
+
+
+
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -69,6 +76,7 @@ function registerValidSW(swUrl, config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
+
               console.log(
                 'New content is available and will be used when all ' +
                   'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
@@ -133,3 +141,54 @@ export function unregister() {
     });
   }
 }
+
+
+
+
+// TRYING TO BG SYNC WITH WORKBOX
+// https://developers.google.com/web/tools/workbox/modules/workbox-background-sync
+
+// importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+
+// console.log(workbox)
+// const bgSyncPlugin = new workbox.backgroundSync.Plugin('todolist-queue', {
+//   maxRetentionTime: 24 * 60 // Retry for max of 24 Hours
+// });
+
+// workbox.routing.registerRoute(
+//   /\/api\/.*\/*.json/,
+//   new workbox.strategies.NetworkOnly({
+//     plugins: [bgSyncPlugin]
+//   }),
+//   'POST'
+// );
+
+
+
+// TRY BG SYNC WITH SERVICE WORKER (NO LIBRARY)
+// self.addEventListener('sync', function(event) {
+//   if (event.tag == 'myFirstSync') {
+//     event.waitUntil(doSomeStuff());
+//   }
+// });
+
+// function doSomeStuff() {
+//   console.log('stuff')
+// }
+
+
+
+
+// problems
+/*
+building with webpack
+running on Node
+make it ignore undefined so that it still works in browser
+if use webpack and workbox then must config
+otherwise try not using workbox library
+MAKE MY OWN FILE AND REGISTER MY OWN
+
+
+webpack and serviceworkers
+
+*/

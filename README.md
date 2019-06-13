@@ -23,9 +23,9 @@ Make a todo list app with a map component that can work offline. The intention i
 - Node.JS Backend - View source here
 - React Frontend (create-react-app)
 - PSQL DB backend
-- Workbox (work in progress)
-- IndexedDB (work in progress)
-- Mapbox (work in progress)
+- [Workbox](https://developers.google.com/web/tools/workbox/ "Workbox")
+- [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API "IndexedDb")
+- [Mapbox](https://www.mapbox.com/ "Mapbox")
 
 
 ### Key Challenges:

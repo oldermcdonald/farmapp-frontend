@@ -20,6 +20,7 @@ export default class ListItem extends React.Component {
     return (
       <ul className="list-item">
         {listItems}
+        hello
       </ul>
     )
   }
