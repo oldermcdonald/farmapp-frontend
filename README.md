@@ -20,7 +20,7 @@ Make a todo list app with a map component that can work offline. The intention i
 
 ### Tech:
 - Progressive Web App (PWA)
-- Node.JS Backend - View source here
+- Node.JS Backend - [view source](https://github.com/oldermcdonald/farmapp-backend)
 - React Frontend (create-react-app)
 - PSQL DB backend
 - [Workbox](https://developers.google.com/web/tools/workbox/ "Workbox")
