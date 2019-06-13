@@ -1,21 +1,21 @@
-# Farm Todo App
+# Farm To-do App
 ### GA - Software Engineering Immersive Project 4
 
-A simple todo list that works offline for farmers to manage tasks. 🚜
+A simple to-do list that works offline for farmers to manage tasks. 🚜
 
 ### Brief:
-Make a todo list app with a map component that can work offline. The intention is that farmers can add tasks to their list when offline and have GPS coordinates saved with the task so that they can return to the exact spot.
+Make a to-do list app with a map component that can work offline. The intention is that farmers can add tasks to their list when offline and have GPS coordinates saved with the task so that they can return to the exact spot.
 
 
 ### Usage Scenario:
- A farmer finds a noxious weed in the paddock while working. She opens the app on her phone which still works even without internet access. She adds a todo item about the weed to remind her to return to the exact spot in a couple of months to check if it is erradicated. When she returns back to the house at the end of the day, her phone background syncs the todo item up to the server over wifi.
+ A farmer finds a noxious weed in the paddock while working. She opens the app on her phone which still works even without internet access. She adds a to-do item about the weed to remind her to return to the exact spot in a couple of months to check if it is erradicated. When she returns back to the house at the end of the day, her phone background syncs the to-do item up to the server over wifi.
 
 
 ### Research:
 - Consulted with a drought stricken cattle farmer in northern NSW to understand parts of the job that they find challenging and where there might be opportunities to assist.
 - Gathered information over phone calls and spreadsheets to get a big picture overview of the many admin processes of running a farm. These processes include stringent reporting demands for bio-security laws, stock management, chemical inventory and feed inventory.
-- Collaborated to reduce the scope of the project down to something more achievable within a short time span, hence focussing on solving ad-hoc task management with a todo list.
-- There are tons of todo list apps available, but struggled to find any with a geolocation tagging abilities that would be useful in a big paddock.
+- Collaborated to reduce the scope of the project down to something more achievable within a short time span, hence focussing on solving ad-hoc task management with a to-do list.
+- There are tons of to-do list apps available, but struggled to find any with a geolocation tagging abilities that would be useful in a big paddock.
 - Developed a feature survey to establish which features would be highest priority (Top 3 were - 'Works Offline', 'has GPS' and 'can  categorize jobs').
 
 ### Tech:
