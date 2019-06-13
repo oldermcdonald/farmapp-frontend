@@ -35,5 +35,10 @@ For me there's been a lot of 'firsts' in this project and I've had to learn many
  3. 
  4. 
 
+### Learnings and what i'd do differently next time:
+1.
+2.
+
+
 ### Timing:
 Built over 4 days in class.
