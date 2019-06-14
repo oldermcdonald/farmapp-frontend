@@ -1,3 +1,7 @@
+// Note on exporting functions:
+// Webpack config only accepts official ES6 syntax for exporting functions
+// not node method of module.exports
+
 import axios from 'axios'
 
 export function getData() {
@@ -17,12 +21,3 @@ export function sendData(itemToAdd) {
     console.log(res)
   })
 }
-
-// Webpack config built to only accept ES6 syntax above (official)
-
-// how node used to export modules
-
-// module.exports = {
-//   getData: getData,
-//   sendData: sendData
-// };

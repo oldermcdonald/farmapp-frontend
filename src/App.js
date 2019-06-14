@@ -1,10 +1,10 @@
 import React from 'react';
 import ToDoList from './components/ToDoList'
 import ListItem from './components/ListItem'
-import { openDB, /* deleteDB, wrap, unwrap */} from 'idb'
+
 
 const serverData = require('./serverData')
-
+const localDatabase = require('./localDatabase')
 class App extends React.Component {
   constructor() {
     super()
@@ -18,11 +18,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // create a local database at start
+    const dbPromise = localDatabase.createDB('farmApp')
+
     serverData.getData()
       .then(dataFromServer => {
         this.updateAppState(dataFromServer)
-        this.saveEventDataLocally(dataFromServer)
+        localDatabase.saveData(dbPromise, dataFromServer)
       }).catch(err => console.log(err))
+
+
   }
 
   updateAppState = data => {
@@ -83,25 +88,6 @@ class App extends React.Component {
     }
   }
 
-  
-  // Local Database IndexedDB Functions 
-
-  // Create a database within IndexedDB local browser
-  createIndexedDB() {
-    if (!('indexedDB' in window)) {return null;}
-    return openDB('todolist', 1, function(upgradeDb) {
-      if (!upgradeDb.objectStoreNames.contains('list')) {
-        const listOS = upgradeDb.createObjectStore('list', {keyPath: 'id'});
-      }
-    });
-  }
-
-  // create indexedDB database and get back a promise
-  dbPromise = this.createIndexedDB();
-
-  saveEventDataLocally = data => {
-    console.log('saving to indexedDb')
-  }
 
 
 
