@@ -189,6 +189,9 @@ otherwise try not using workbox library
 MAKE MY OWN FILE AND REGISTER MY OWN
 
 
-webpack and serviceworkers
+webpack and serviceworkers - configuration
+
+heroku create
+surge instead of heroku
 
 */
