@@ -188,10 +188,8 @@ if use webpack and workbox then must config
 otherwise try not using workbox library
 MAKE MY OWN FILE AND REGISTER MY OWN
 
-
 webpack and serviceworkers - configuration
 
-heroku create
-surge instead of heroku
+heroku create app v2
 
 */

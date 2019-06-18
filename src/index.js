@@ -12,8 +12,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register();
 
-
-
 // call bg sync for service worker
 // navigator.serviceWorker.ready.then(function(swRegistration) {
 //   return swRegistration.sync.register('myFirstSync');

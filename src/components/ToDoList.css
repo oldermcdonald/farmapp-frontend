@@ -1,12 +1,47 @@
+.toDoList form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 2em;
+  font-family: 'Open Sans', sans-serif;
+  padding: 1em;
+}
+
+
 .toDoList input {
-  border: 1px solid black;
+  padding: 0.8em;
+  font-size: 1.2em;
+  font-family: inherit;
+  width: 50vw;
+  border: none;
+  border-radius: 0.3em;
+}
+
+.toDoList input::placeholder {
+  color: rgb(165, 165, 165);
+}
+
+.toDoList input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }
 
 .toDoList button {
-  background-color: white;
-  border: 1px solid black
+  padding: 0.8em;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+  font-family: inherit;
+  color: white;
+  background-color: #55868C;
+  border: 1px solid #55868C;
+  border-radius: 0.3em;
 }
 
-.toDoList button:hover {
-  background-color: yellow
+.toDoList button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+.toDoList button:active {
+  transform: scale(0.95);
 }

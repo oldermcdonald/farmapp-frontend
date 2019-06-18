@@ -1,10 +1,17 @@
 import React from 'react';
 import ToDoList from './components/ToDoList'
 import ListItem from './components/ListItem'
+import './App.css'
+import './reset.css'
+// import db from './localDatabase'
+
+import Dexie from 'dexie'
 
 
 const serverData = require('./serverData')
-const localDatabase = require('./localDatabase')
+// const localDatabase = require('./localDatabase')
+
+
 class App extends React.Component {
   constructor() {
     super()
@@ -17,17 +24,38 @@ class App extends React.Component {
     }
   }
 
+
+
   componentDidMount() {
-    // create a local database at start
-    const dbPromise = localDatabase.createDB('farmApp')
+
+    // Create a new local database instance with dexie
+    var localDb = new Dexie('famappLocal');
+    localDb.version(1).stores({
+      todolist: "++id, title, category, details, location, lat, long"
+    });
+
+    // Open the localDb
+    localDb.open().catch(error => console.error(`Open failed: ${error}`))
+
+    // add stuff to localDb
+    localDb.todolist.add({
+      title: "derp",
+      category: 'a',
+      details: 'none',
+      location: 'melb',
+      lat: 3,
+      long: 5
+    })
 
     serverData.getData()
       .then(dataFromServer => {
         this.updateAppState(dataFromServer)
-        localDatabase.saveData(dbPromise, dataFromServer)
+        console.log(dataFromServer[0])
+        // add server data to local db
+
+        localDb.todolist.add(dataFromServer)
+
       }).catch(err => console.log(err))
-
-
   }
 
   updateAppState = data => {
@@ -54,7 +82,7 @@ class App extends React.Component {
 
   // adds the current item to the item array
   addItem = event => {
-    event.preventDefault()
+    event.preventDefault() // prevent reload on form submission
     const newItem = this.state.currentItem
     console.log(`adding new item to state: ${newItem.title}`)
     // update state with newItem
@@ -64,7 +92,7 @@ class App extends React.Component {
       // reset currentItem to empty values
       currentItem: { text: '', key: ''}
     })
-    serverData.sendData(newItem)
+    // serverData.sendData(newItem)
   }
 
 
@@ -100,7 +128,7 @@ class App extends React.Component {
           handleInputField={this.handleInputField}
           currentItem={this.state.currentItem}
         />
-        <h2>Current todo list:</h2>
+
         <ListItem itemsArray={this.state.items}/>
       </div>
     );

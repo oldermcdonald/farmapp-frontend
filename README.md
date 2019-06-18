@@ -31,13 +31,12 @@ Make a to-do list app with a map component that can work offline. The intention 
 ### Key Challenges:
 For me there's been a lot of 'firsts' in this project and I've had to learn many new things! Its my first react app, the first time i've tried using service workers, the first time i've tried to make a PWA, and the first time i've played with Workbox and IndexedDB!
  1. Service Workers - Create-react-app provides limited access to the service worker config which has proved challenging. While its great that you can register the react app as a PWA straight out of the box (so that it pre-caches the site for you), I found it more difficult to configure when I wanted to create a new database on indexedDB. Create-react-app does utilize Workbox under the hood now, rather than sw-precache which is useful.
- 2. Mapping - Mapbox with open-street-map
- 3. 
- 4. 
+ 2. Mapping - Mapbox with open-street-map. Still looking into this.
+ 3. Limited availability of up-to-date documentation around serviceworkers with react
 
 ### Learnings and what i'd do differently next time:
-1.
-2.
+1. 
+2. 
 
 
 ### Timing:
