@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoList from './components/ToDoList'
-import ListItem from './components/ListItem'
+import ListItems from './components/ListItems'
 import './App.css'
 import './reset.css'
 // import db from './localDatabase'
@@ -23,7 +23,6 @@ class App extends React.Component {
       }
     }
   }
-
 
 
   componentDidMount() {
@@ -96,8 +95,14 @@ class App extends React.Component {
   }
 
 
-  removeItem = event => {
-    console.log('item removed')
+  deleteItem = key => {
+    console.log(`item (${key}) removed`)
+    const filteredItems = this.state.items.filter(item => {
+      return item.key !== key
+    })
+    this.setState({
+      items: filteredItems
+    })
   }
 
 
@@ -124,12 +129,12 @@ class App extends React.Component {
       <div className="App">
         <ToDoList
           addItem={this.addItem}
-          inputElement={this.inputElement}
+          inputElement={this.inputElement} // to refer to this element
           handleInputField={this.handleInputField}
           currentItem={this.state.currentItem}
         />
 
-        <ListItem itemsArray={this.state.items}/>
+        <ListItems itemsArray={this.state.items} deleteItem={this.deleteItem}/>
       </div>
     );
   }

@@ -2,10 +2,14 @@ import React from 'react'
 import './ToDoList.css'
 export default class ToDoList extends React.Component {
 
+  // 
+  componentDidUpdate() {
+    // this.props.inputElement.current.focus()
+  }
+
   render() {
     return (
       <div className="toDoList">
-
 
         <form action="submit" onSubmit={this.props.addItem}>
           <input
